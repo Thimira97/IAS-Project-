@@ -1,0 +1,67 @@
+<%- include('partials/header'); -%>
+
+    <%- include('partials/nav'); -%>
+
+        <div class="fileDetailnew">
+            <h2>File Details</h2>
+            <ul>
+                <li>
+                    <h4>File Name : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.name %>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h4>Description : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.description %>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h4>Created Date : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.date %>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <form action="/myfiles/<%= blog._id %>/download" method="GET">
+                        <button class="btn1">Download</button>
+                    </form>
+                </li>
+                <li>
+                    <button class="btn1"><a class="delete" data-doc="<%= blog._id %>">Delete</a></button>
+                </li>
+            </ul>
+
+
+        </div>
+
+        <script>
+            const trashcan = document.querySelector('a.delete');
+
+            trashcan.addEventListener('click', (e) => {
+                const endpoint = `/myfiles/${trashcan.dataset.doc}`;
+                console.log(endpoint);
+
+                fetch(endpoint, {
+                        method: 'DELETE'
+                    })
+                    .then((response) => response.json())
+                    .then((data) => window.location.href = data.redirect)
+                    .catch(err => console.log(err));
+            })
+        </script>
+
+        <%- include('partials/footer'); -%>

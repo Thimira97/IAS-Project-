@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+    <%- include('partials/nav'); -%>
+        <div class="create-blog content" style="margin-bottom: -80px;">
+            <form class="form" action="/myfiles" method="POST" enctype="multipart/form-data">
+                <h3>Upload Your File</h3>
+                <label for="name">File Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required>
+                <label for="sampleFile">Upload File:</label>
+                <input type="file" id="sampleFile" name="sampleFile" required>
+                <label for="securtyKey">Securty Key:</label>
+                <input type="text" id="securtyKey" name="securtyKey" required>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="email">Request Email:</label>
+                <input type="email" id="email" name="email" value="<%= Email %>" required>
+                <button class="btn">Upload</button>
+            </form>
+        </div>
+        <%- include('partials/footer'); -%>

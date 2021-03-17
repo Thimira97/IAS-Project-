@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%>
+
+    <%- include('partials/nav'); -%>
+        <h2 style="text-align: center;">My Files</h2>
+        <ul class="recipes">
+            <% if (blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    <li class="recipe">
+                        <img src="/file.png" alt="smoothie recipe icon">
+                        <a href="/myfiles/<%= blog._id %>">
+                            <h4>
+                                <%= blog.name %>
+                            </h4>
+                            <p style="font-size: 15px">
+                                <%= blog.date %>
+                            </p>
+                        </a>
+                    </li>
+                    <% }) %>
+                        <% } else { %>
+                            <div class="noFiles">
+                                <h4>There are no uploaded files to display....</h4>
+                            </div>
+                            <% } %>
+        </ul>
+
+        <%- include('partials/footer'); -%>

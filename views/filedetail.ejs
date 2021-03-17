@@ -1,0 +1,81 @@
+<%- include('partials/header'); -%>
+
+    <%- include('partials/nav'); -%>
+
+        <div id="fileDetail" class="fileDetail">
+            <h2>File Details</h2>
+            <ul>
+                <li>
+                    <h4>File Name : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.name %>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h4>Description : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.description %>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h4>Reguest Email : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.userEmail1 %>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h4>Created Date : </h4>
+                </li>
+                <li>
+                    <p>
+                        <%= blog.date %>
+                    </p>
+                </li>
+            </ul>
+            <div class="SecurityKey" id="SecurityKey">
+                <h4>Enter the Security Key :</h4>
+                <input type="text" id="myKey">
+                <button class="btn" id="btn1" type="button" onclick="myFunction()">Submit</button>
+                <button class="btn" id="btn1" type="button"><a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Request</a></button>
+                <h4 class="Warninig" id="demo"></h4>
+            </div>
+
+            <form action="/allfiles/<%= blog._id %>/download" method="GET">
+                <button class="btn2" id="btn2">Download</button>
+            </form>
+
+        </div>
+
+        <script>
+            function myFunction() {
+                let A = '<%- Value %>';
+                var x = document.getElementById("myKey").value;
+                if (A == x) {
+                    var y = document.getElementById("SecurityKey");
+                    y.setAttribute('class', 'SecurityKeynew');
+                    var Y = document.getElementById("btn2");
+                    Y.setAttribute('class', 'new');
+                    var Z = document.getElementById("fileDetail");
+                    Z.setAttribute('class', 'fileDetailnew');
+                } else {
+                    document.getElementById(
+                        "demo").innerHTML = "Sorry! Your entered key is worng. Try again!";
+                    var N = document.getElementById("fileDetail");
+                    N.setAttribute('class', 'fileDetail1');
+                }
+            }
+        </script>
+
+        <%- include('partials/footer'); -%>
